@@ -1,31 +1,212 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-        <!-- Tailwind and daisyUI -->
-        <link
-        href="https://cdn.jsdelivr.net/npm/daisyui@3.6.4/dist/full.css"
-        rel="stylesheet"
-        type="text/css" />
-      <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body>
-    <div class="drawer drawer-end">
-        <input id="my-drawer-4" type="checkbox" class="drawer-toggle" />
-        <div class="drawer-content">
-          <!-- Page content here -->
-          <label for="my-drawer-4" class="drawer-button btn btn-primary">Open drawer</label>
-        </div> 
-        <div class="drawer-side">
-          <label for="my-drawer-4" class="drawer-overlay"></label>
-          <ul class="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
-            <!-- Sidebar content here -->
-            <li><a>Sidebar Item 1</a></li>
-            <li><a>Sidebar Item 2</a></li>
-          </ul>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>question and Answer</title>
+    <!-- Tailwind and daisyUI -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@3.6.4/dist/full.css"
+      rel="stylesheet"
+      type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <!-- === Header Start === -->
+    <header class="container mx-auto">
+      <div class="navbar bg-base-100 mt-5">
+        <div class="navbar-start">
+          <a class="btn btn-ghost normal-case text-xl">
+            <img class="" src="./logo/Logo.png" alt="" />
+          </a>
+        </div>
+
+        <div class="navbar-end">
+          <a
+            onclick="blogHandler()"
+            class="rounded py-2 px-5 text-lg font-medium bg-[#FF1F3D] text-white hover:bg-gray-300 hover:text-gray-600 cursor-pointer"
+            >Home</a
+          >
+          <div id="drawer-container"></div>
         </div>
       </div>
-</body>
+
+      <hr class="border-b-2 mt-2" />
+    </header>
+    <!-- === Header End === -->
+    <main class="container mx-auto">
+      <!-- question -->
+      <section class="mt-10">
+        <div class="grid grid-cols-2 gap-10">
+          <div>
+            <h1 class="text-4xl font-semibold mb-5">
+              1. Discuss the scope of var, let, and const ?
+            </h1>
+            <hr class="border-b-2 mb-5" />
+            <div class="space-y-5">
+              <h2 class="text-3xl font-bold">Var:-</h2>
+              <ul class="list-disc space-y-5">
+                <li>
+                  <span class="font-bold">Function Scope:</span> Variables
+                  declared with var are function-scoped. This means they are
+                  only accessible within the function in which they are declared
+                  or globally if declared outside of any function.
+                </li>
+                <li>
+                  <span class="font-bold">Hoisting:</span>Variables declared
+                  with var are hoisted to the top of their containing function
+                  or global scope. This means you can access a var variable
+                  before it's declared in code, but it will be undefined.
+                </li>
+                <li>
+                  <span class="font-bold">No Block Scope:</span> Unlike let and
+                  const, var does not have block-level scope. Variables declared
+                  with var inside a block (like a loop or an if statement) are
+                  visible throughout the entire function.
+                </li>
+              </ul>
+
+              <div class="mockup-code">
+                <pre class="text-success"><code>
+                              function example() {
+                                  if (true) {
+                                      var x = 10;
+                                  }
+                                  console.log(x); // x is accessible here, and its value is 10
+                              }
+                              
+                          </code></pre>
+              </div>
+            </div>
+            <div class="space-y-5">
+              <h2 class="text-3xl font-bold">Const:-</h2>
+              <ul class="list-disc space-y-5">
+                <li>
+                  <span class="font-bold">Block Scope:</span>Like let, const
+                  variables are block-scoped.
+                </li>
+
+                <li>
+                  <span class="font-bold">No Hoisting:</span>const variables are
+                  not hoisted, and trying to access them before they're declared
+                  results in a ReferenceError.
+                </li>
+                <li>
+                  <span class="font-bold">Immutable:</span> const variables are
+                  constant, meaning their value cannot be reassigned after they
+                  are initialized. However, if a const variable holds an object
+                  or an array, the properties or elements of the object or array
+                  can still be modified.
+                </li>
+              </ul>
+
+              <div class="mockup-code">
+                <pre data-prefix=">" class="text-success"><code>
+                              if (true) {
+                                  let y = 20;
+                              }
+                              console.log(y); // ReferenceError: y is not defined
+                          </code></pre>
+              </div>
+            </div>
+            <div class="space-y-5">
+              <h2 class="text-3xl font-bold">Let:-</h2>
+              <ul class="list-disc space-y-5">
+                <li>
+                  <span class="font-bold">Block Scope:</span> Variables declared
+                  with let are block-scoped. They are only accessible within the
+                  block (enclosed by curly braces) in which they are defined.
+                </li>
+
+                <li>
+                  <span class="font-bold">No Hoisting:</span> Unlike var, let
+                  variables are not hoisted to the top of their containing
+                  block. Trying to access them before they're declared results
+                  in a ReferenceError.
+                </li>
+              </ul>
+
+              <div class="mockup-code">
+                <pre data-prefix=">" class="text-success"><code>
+                              const z = 30;
+                                  z = 40; // Error: Assignment to a constant variable
+  
+                              const myArray = [1, 2, 3];
+                              myArray.push(4); // This is allowed
+                              myArray = [4, 5, 6]; // Error: Assignment to a constant variable
+  
+                          </code></pre>
+              </div>
+            </div>
+          </div>
+          <!-- question one end -->
+          <div>
+            <div class="space-y-5">
+              <h1 class="text-4xl font-semibold mb-5">
+                Tell us the use cases of null and undefined ?
+              </h1>
+              <hr class="border-b-2 mb-5" />
+              <p>
+                In JavaScript, undefined means a variable has been declared but
+                has not yet been assigned a value. On the other hand, null is an
+                assignment value that represents no value or no object. It is
+                often used to represent an intentional absence of any object
+                value, as when a function returns null but there is no object
+                for it to return.
+                <span class="text-xl text-gray-500"
+                  >some use cases of null and undefined:</span
+                >
+              </p>
+              <ul class="list-disc space-y-5">
+                <li>
+                  Use undefined when you want to check if a variable has been
+                  initialized or not.
+                </li>
+                <li>
+                  Use null when you want to indicate that a variable has no
+                  value.
+                </li>
+                <li>
+                  Use undefined when you want to check if an object property
+                  exists.
+                </li>
+                <li>
+                  Use null when you want to indicate that an object property has
+                  no value.
+                </li>
+              </ul>
+            </div>
+            <!-- question 3 -->
+            <div class="mt-10">
+              <div>
+                <h1 class="text-4xl font-semibold mb-5">
+                  3.What do you mean by REST API?
+                </h1>
+                <hr class="border-b-2 mb-5" />
+                <p>
+                  A REST API is an API that conforms to the design principles of
+                  the REST, or representational state transfer architectural
+                  style. It is an application programming interface (API) that
+                  allows for interaction with RESTful web services. REST stands
+                  for representational state transfer and was created by
+                  computer scientist Roy Fielding12. REST APIs provide a
+                  flexible, lightweight way to integrate applications and to
+                  connect components in microservices architectures1. They are
+                  used to access and manipulate web resources using a uniform
+                  and predefined set of stateless operations1.
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- question two end -->
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const blogHandler = () => {
+        window.location.href = "index.html";
+      };
+    </script>
+  </body>
 </html>

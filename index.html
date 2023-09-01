@@ -22,6 +22,7 @@
         </div>
         <div class="navbar-center hidden lg:flex">
           <button
+            onclick="sortingHandler()"
             class="bg-gray-300 rounded text-lg font-medium px-5 py-2 hover:bg-[#FF1F3D] hover:text-white">
             Sort by view
           </button>
@@ -29,9 +30,10 @@
         <div class="navbar-end">
           <a
             onclick="blogHandler()"
-            class="rounded py-2 px-5 text-lg font-medium bg-[#FF1F3D] text-white hover:bg-gray-300 hover:text-gray-600"
+            class="rounded py-2 px-5 text-lg font-medium bg-[#FF1F3D] text-white hover:bg-gray-300 hover:text-gray-600 cursor-pointer"
             >Blog</a
           >
+          <div id="drawer-container"></div>
         </div>
       </div>
 
@@ -44,7 +46,7 @@
       <!-- video category tab start -->
       <section
         id="tab-container"
-        class="flex items-center justify-center gap-6 py-8">
+        class="flex flex-wrap items-center justify-center gap-6 py-8">
         <!-- <div class="flex items-center justify-center gap-6 py-8">
           <button class="bg-gray-300 rounded text-lg font-medium px-5 py-2 text-gray-500 hover:bg-[#FF1F3D] hover:text-white">Sort by view</button>
           <button class="bg-gray-300 rounded text-lg font-medium px-5 py-2 text-gray-500">Sort by view</button>
@@ -69,7 +71,7 @@
       <!-- card container start -->
       <section
         id="card-container"
-        class="grid gap-5 grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
+        class="grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
         <!-- <div class="card bg-base-100 shadow-xl">
           <div class="relative">
             <img

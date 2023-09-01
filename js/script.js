@@ -29,33 +29,38 @@ const tabHandler = async (categoryId, own) => {
   const data = await res.json();
   const cardData = data.data;
   console.log(cardData);
+  console.log(cardData[2].others.posted_date);
+
+  sortingData(cardData);
+
+
 
   const cardContainer = document.getElementById("card-container");
-  const noDataContainer = document.getElementById('noData-container')
+  const noDataContainer = document.getElementById("noData-container");
 
   cardContainer.innerHTML = "";
 
-  console.log(cardData.length);
   // no data condition
   if (cardData.length === 0) {
-    noDataContainer.classList.remove('hidden')
-
-  }else{
-    noDataContainer.classList.add('hidden');
+    noDataContainer.classList.remove("hidden");
+  } else {
+    noDataContainer.classList.add("hidden");
   }
   cardData.forEach((cardData) => {
+    // console.log('tab category',cardData);
+
     const div = document.createElement("div");
-    div.className = "card max-w-96 bg-base-100 shadow-xl";
+    div.className = "card bg-base-100 shadow-xl";
 
     div.innerHTML = `
         <div class="relative">
         <img
-        class="rounded-lg lg:h-[200px]"
+        class="rounded-lg h-[200px] object-cover"
           src="${cardData.thumbnail}"
           alt="Thumbnail" />
         <p
           class="bg-black text-white  rounded-md lg:max-w-fit px-2 absolute bottom-5 right-5">
-          3hrs 56 min ago
+          ${cardData?.others?.posted_date?convertSecond(cardData?.others?.posted_date):''}
         </p>
       </div>
 
@@ -114,9 +119,36 @@ const tabHandler = async (categoryId, own) => {
     cardContainer.appendChild(div);
   });
 };
+// posted convert hour minute second
+const convertSecond = (seconds) => {
+  const hours = Math.floor(seconds / 3600);
+  
+  const minute = Math.floor((seconds % 3600) /60 )
+  return `${hours}hrs ${minute}min ago`
+}
+convertSecond()
+
+
+const sortingData = (cardData) => {
+  const sortedArray = cardData.sort((v1, v2) => {
+    const view1 = parseInt(v1.others.views);
+    const view2 = parseInt(v2.others.views);
+    return view2 - view1;
+  });
+  // console.log(cardData);
+  return sortedArray;
+};
+const sortingHandler = () => {
+  sortingData(cardData);
+  // console.log('clicked');
+
+
+};
 
 
 // Blog Handler
-
+const blogHandler = () => {
+  window.location.href = "blog.html";
+};
 tabHandler(1000);
 loadData();

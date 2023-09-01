@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>hello</h1>
+    <script>
+let products = [
+  {
+    "product_name": "The Witchers",
+    "type": "book",
+    "manufactured": new Date('2019-05-13'),
+    'original': {
+      "price": "800k"
+    }
+  },
+  {
+    "product_name": "Black Heels",
+    "type": "Shoes",
+    "manufactured": new Date('2021-07-06'),
+    'original': {
+      "price": "2.5k",
+    }
+  },
+  {
+    "product_name": "Skybags",
+    "type": "Bags",
+    "manufactured": new Date('2020-09-22'),
+    'original': {
+      "price": "1.2k",
+    }
+  },
+  {
+    "product_name": "OnePlus 9",
+    "type": "Mobile Phone",
+    "manufactured": new Date('2021-03-23'),
+    'original': {
+      "price": "49000k",
+    }
+  },
+];
+
+// Sort the products array in descending order by the 'original' price property
+
+ 
+const newArray = products.sort((product1, product2) => {
+  const price1 = parseInt(product1['original']['price']);
+  const price2 = parseInt(product2['original']['price']);
+  
+  return price2 - price1;
+});
+
+console.log(products);
+console.log(newArray);
+
+
+    </script>
+</body>
+</html>
+<!-- (a1.others.views.slice(0,-1) < a1.others.views.slice(0,-1)) ? 1 -->
