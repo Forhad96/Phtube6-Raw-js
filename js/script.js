@@ -133,7 +133,7 @@ const displayData = () => {
 };
 
 // sorting Data handler
-function sortingHandler() {
+function sortingHandler(e) {
     cardData.sort((v1, v2) => {
       const view1 = parseInt(v1.others.views);
       const view2 = parseInt(v2.others.views);
