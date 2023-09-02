@@ -14,7 +14,7 @@
   <body>
     <!-- === Header Start === -->
     <header class="container mx-auto">
-      <div class="navbar bg-base-100 mt-5">
+      <div class="navbar bg-base-100">
         <div class="navbar-start">
           <a class="btn btn-ghost normal-case text-xl">
             <img class="" src="./logo/Logo.png" alt="" />
@@ -22,21 +22,38 @@
         </div>
         <div class="navbar-center hidden lg:flex">
           <button
-            onclick="sortingHandler()"
-            class="bg-gray-300 rounded text-lg font-medium px-5 py-2 hover:bg-[#FF1F3D] hover:text-white">
-            Sort by view
-          </button>
+          onclick="sortingHandler()"
+          class="bg-gray-300 rounded md:text-lg font-medium px-5 py-2 hover:bg-[#ff1f3d] hover:text-white">
+          Sort by view
+        </button>
         </div>
-        <div class="navbar-end">
+        <div class="navbar-end ">
           <a
+          onclick="blogHandler()"
+          class="rounded py-2 px-5 text-lg font-medium bg-[#FF1F3D] hidden lg:block text-white hover:bg-gray-300 hover:text-gray-600 cursor-pointer"
+          >Blog</a
+        >
+        <div class="dropdown dropdown-bottom dropdown-end">
+          <label tabindex="0" class="btn btn-ghost lg:hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+          </label>
+          <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+            <div class="flex gap-3 flex-col items-center">
+              <button
+              onclick="sortingHandler()"
+              class="bg-gray-300 rounded md:text-lg font-medium px-5 py-2 hover:bg-[#FF1F3D] hover:text-white">
+              Sort by view
+            </button>
+            <a
             onclick="blogHandler()"
             class="rounded py-2 px-5 text-lg font-medium bg-[#FF1F3D] text-white hover:bg-gray-300 hover:text-gray-600 cursor-pointer"
             >Blog</a
           >
-          <div id="drawer-container"></div>
+            </div>
+          </ul>
+        </div>
         </div>
       </div>
-
       <hr class="border-b-2 mt-2" />
     </header>
     <!-- === Header End === -->
@@ -138,8 +155,7 @@
       </div>
     </section> -->
     <!-- Link External JavaScript -->
-    <!-- <script src="./js/script.js"></script> -->
-    <script src="./js/new2.js"></script>
+    <script src="./js/script.js"></script>
   </body>
 </html>
 <!-- === Start === -->
