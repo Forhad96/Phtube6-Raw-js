@@ -1,58 +1,55 @@
-let category;
-let isSorted = false;
+// let category;
+// let isSorted = false;
+let cardData = 1000;
 function sortingHandler() {
-
-  const loadData = async () => {
-    const res = await fetch(
-      "https://openapi.programming-hero.com/api/videos/categories"
-    );
-    const data = await res.json();
-    // console.log(data.data);
-  };
-  loadData()
+//   const  newArray =    cardData.sort((v1, v2) => {
+//       const view1 = parseInt(v1.others.views);
+//       const view2 = parseInt(v2.others.views);
+//       return view2 - view1;
+//     });
+    console.log(cardData);
+    loadData()
 }
-
 // fetch data
-const loadData = async () => {
+const loadData = async (id = 1000) => {
   const res = await fetch(
-    "https://openapi.programming-hero.com/api/videos/categories"
+    `https://openapi.programming-hero.com/api/videos/category/${id}`
   );
   const data = await res.json();
-  const category = data.data;
-  displayTabData(category);
+   cardCard = data.data;
+//   tabHandler(cardCard)
 };
 
 // tab display
-const displayTabData = (categories) => {
+const displayTabData = async() => {
+    const res =  await fetch('https://openapi.programming-hero.com/api/videos/categories');
+    const data = await res.json();
+    const categories = data.data;
   const tabContainer = document.getElementById("tab-container");
-
   categories.forEach((tabCategory) => {
-
     const div = document.createElement("div");
     div.innerHTML = `
-        <button onclick = "tabHandler('${tabCategory.category_id}',this)" class="bg-gray-300 rounded text-lg font-medium px-5 py-2 text-gray-500 hover:bg-[#FF1F3D] hover:text-white">${tabCategory?.category}</button>
+        <button onclick = "loadData('${tabCategory.category_id}',this)" class="bg-gray-300 rounded text-lg font-medium px-5 py-2 text-gray-500 hover:bg-[#FF1F3D] hover:text-white">${tabCategory?.category}</button>
         `;
     tabContainer.appendChild(div);
   });
 };
+displayTabData()
 
-const tabHandler = async (categoryId, own) => {
-  const res = await fetch(
-    `https://openapi.programming-hero.com/api/videos/category/${categoryId}`
-  );
-  const data = await res.json();
-  const cardData = data.data;
-  
-  // newArray(cardData)
+const tabHandler = (cardCard) => {
 
-  // const sortingData = () => {
-  //   cardData.sort((v1, v2) => {
-  //     const view1 = parseInt(v1.others.views);
-  //     const view2 = parseInt(v2.others.views);
-  //     return view2 - view1;
-  //   });
-  // };
-  // sortingData()
+ cardData = cardCard;
+// console.log(cardCard);
+
+//   const sortingData = () => {
+//     cardData.sort((v1, v2) => {
+//       const view1 = parseInt(v1.others.views);
+//       const view2 = parseInt(v2.others.views);
+//       return view2 - view1;
+//     });
+//   };
+//   sortingData()
+
 
 
   const cardContainer = document.getElementById("card-container");
@@ -146,8 +143,14 @@ const tabHandler = async (categoryId, own) => {
 };
 
 function newArray(newArray){
-  // console.log(newArray);
-  return newArray;
+//   console.log(newArray);
+//     const sortingData = () => {
+//     cardData.sort((v1, v2) => {
+//       const view1 = parseInt(v1.others.views);
+//       const view2 = parseInt(v2.others.views);
+//       return view2 - view1;
+//     });
+//   };
 
 }
 // console.log(newArray);
@@ -166,6 +169,6 @@ const convertSecond = (seconds) => {
 const blogHandler = () => {
   window.location.href = "blog.html";
 };
-tabHandler(1000);
-loadData();
+// tabHandler(1000);
+// loadData();
 
