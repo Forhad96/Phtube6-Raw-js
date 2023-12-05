@@ -20,7 +20,6 @@ const loadData = async () => {
 };
 
 
-
 const tabHandler = async (categoryId, own) => {
   const res = await fetch(
     `https://openapi.programming-hero.com/api/videos/category/${categoryId}`
@@ -155,3 +154,4 @@ const blogHandler = () => {
 };
 tabHandler(1000);
 loadData();
+
